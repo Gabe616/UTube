@@ -6,7 +6,7 @@ let colors = {
   purple: "#f2f",
   cyan: "#2ff",
 };
-let colr = colors.purple;
+let colr = colors.green;
 let makeCss = () => {
   return `
     .ytp-swatch-background-color {
