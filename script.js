@@ -2,11 +2,13 @@ let colors = {
   red: "#f22",
   green: "#2f2",
   blue: "#22f",
+
   yellow: "#ff2",
   purple: "#f2f",
   cyan: "#2ff",
 };
-let colr = colors.green;
+
+let colr = colors.red;
 let txtnd = document.createTextNode("slay");
 let adblock = true;
 let makeCss = () => {
@@ -45,24 +47,24 @@ stylesheet.appendChild(txtnd);
 window.ytstyle = stylesheet;
 document.head.appendChild(stylesheet);
 
-window.ytbar = {};
-for (let [k, b] of Object.entries(colors)) {
-  window.ytbar[k] = () => {
-    colr = b;
-    makeCss();
-  };
-}
-window.ytbar.custom = (str) => {
-  colr = str;
-  makeCss();
-};
-
 let avdd;
 let isloser = false;
+let isawesome = false;
+let awshsv = 0;
+let coolthingy = "ytd-app *";
 
+if (window.awesomeTimer) clearInterval(window.awesomeTimer);
+
+document.querySelectorAll(coolthingy).forEach((x) => {
+  x.style.filter = "";
+});
+
+let lastFnc;
 let typeFunc = (e) => {
   let ddt = e.split(/ +/g);
   let [cmd, ignorethislmao, ...args] = ddt;
+  if (lastFnc === e) return;
+  lastFnc = e;
 
   switch (cmd) {
     case "ytbar":
@@ -97,6 +99,22 @@ let typeFunc = (e) => {
           adblock = blk;
           makeCss();
         }
+      }
+      break;
+    case "awesome":
+      isawesome = !isawesome;
+      clearInterval(window.awesomeTimer);
+      document.querySelectorAll(coolthingy).forEach((x) => {
+        x.style.filter = "";
+      });
+
+      if (isawesome) {
+        window.awesomeTimer = setInterval(() => {
+          document.querySelectorAll(coolthingy).forEach((x) => {
+            x.style.filter = `hue-rotate(${awshsv}deg)`;
+          });
+          awshsv += 1.5;
+        }, 3);
       }
       break;
   }
