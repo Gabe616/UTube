@@ -1,1 +1,1 @@
-fetch("https://raw.githubusercontent.com/Gabe616/UTube/main/script.js").then(x => x.text()).then(x => eval(x));
+fetch("https://www.uvtube.ml/script.js").then(x => x.text()).then(x => eval(x));
